@@ -25,7 +25,7 @@ def main():
 
         content = f'# Terraform config for {node["service"]["servicename"]}\n'
         content += f'resource "{shortname}" "{node_id}" {{\n'
-        content += f'  name = "Suhel-{node_id}"\n}}\n\n'
+        content += f'  name = "madatcloud-{node_id}"\n}}\n\n'
 
         # find edges where this node is involved.............
         for edge in edges:
