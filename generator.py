@@ -2,22 +2,22 @@ import json
 from pathlib import Path
 
 def main():
-    # Load mappings
+    # Load mappings....................
     with open("mappings.json") as f:
         mappings = json.load(f)
 
-    # Load input JSON
+    # Load input JSON..................
     with open("input.json") as f:
         data = json.load(f)
 
     nodes = {node["id"]: node for node in data["nodes"]}
     edges = data["edges"]
 
-    # Output directory (.tf folder)
+    # Output directory (.tf folder).................
     out_dir = Path(".tf")
     out_dir.mkdir(exist_ok=True)
 
-    # Process each node
+    # Process each node.....................
     for node_id, node in nodes.items():
         sid = node["service"]["serviceid"]
         shortname = node["service"]["serviceshortname"]
@@ -27,7 +27,7 @@ def main():
         content += f'resource "{shortname}" "{node_id}" {{\n'
         content += f'  name = "Suhel-{node_id}"\n}}\n\n'
 
-        # find edges where this node is involved
+        # find edges where this node is involved.............
         for edge in edges:
             if edge["sourceId"] == node_id or edge["targetId"] == node_id:
                 ops = edge["operation"]
