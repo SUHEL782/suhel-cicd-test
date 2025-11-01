@@ -1,0 +1,59 @@
+{
+  "nodes": [
+    {
+      "id": "awss3-0",
+      "service": {
+        "serviceid": 86,
+        "servicename": "Amazon S3",
+        "serviceshortname": "awss3",
+        "servicecategory": "Storage",
+        "genericservicetype": "Storage",
+        "serviceproviderid": 1,
+        "serviceprovidername": "aws",
+        "attachAs": "target"
+      },
+      "position": { "x": 0, "y": 0 }
+    },
+    {
+      "id": "awslambda-1",
+      "service": {
+        "serviceid": 48,
+        "servicename": "AWS Lambda",
+        "serviceshortname": "awslambda",
+        "servicecategory": "Compute",
+        "genericservicetype": "Compute",
+        "serviceproviderid": 1,
+        "serviceprovidername": "aws"
+      },
+      "position": { "x": 300, "y": 0 }
+    },
+    {
+      "id": "awsec2-G4s8",
+      "service": {
+        "serviceid": 36,
+        "servicename": "Amazon EC2",
+        "serviceshortname": "awsec2",
+        "servicecategory": "Compute",
+        "genericservicetype": "Compute",
+        "serviceproviderid": 1,
+        "serviceprovidername": "aws"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-qRJT",
+      "position": "right",
+      "sourceId": "awss3-0",
+      "targetId": "awslambda-1",
+      "operation": ["events"]
+    },
+    {
+      "id": "e-di0K",
+      "position": "right",
+      "sourceId": "awss3-0",
+      "targetId": "awsec2-G4s8",
+      "operation": ["read"]
+    }
+  ]
+}
